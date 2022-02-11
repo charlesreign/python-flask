@@ -1,3 +1,4 @@
+from os import abort
 from flask import Flask, session, redirect, url_for, render_template, request
 
 app = Flask(__name__)
@@ -8,9 +9,13 @@ def index():
 
 @app.route('/login', methods=['POST','GET'])
 def login():
-    if request.method == 'POST' and request.form['username'] == 'admin':
-        return redirect(url_for('success'))
-    return redirect(url_for('index'))
+    if request.method == 'POST':
+        if request.form['username'] == 'admin':
+            return redirect(url_for('success'))
+        else:
+            abort()
+    else:
+        return redirect(url_for('index'))
 
 @app.route('/success')
 def success():
