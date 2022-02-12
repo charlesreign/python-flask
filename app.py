@@ -1,4 +1,3 @@
-from crypt import methods
 from flask import Flask, render_template, request
 import sqlite3 as sql
 
@@ -33,7 +32,7 @@ def addrec():
 
 @app.route('/list')
 def list():
-    con = sql.connect("database.db")
+    con = sql.connect("sqlite_db.db")
     con.row_factory = sql.Row
     cur = con.cursor()
     con.execute("SELECT * FROM students")
