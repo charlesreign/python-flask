@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show all</title>
+</head>
+<body>
+    <h3><a href="{{ url_for('show_all') }}">Flask SQLAlchemy</a></h3>
+    <hr>
+    {%- for message in get_flashed_messages() %}
+    {{ message }}
+    {%- endfor %}
+
+    <h3>Student (<a href="{{ url_for('new') }}">add student</a>)</h3>
+    <table border="1">
+        <thead>
+            <td><h3>Name</h3></td>
+            <td><h3>Address</h3></td>
+            <td><h3>City</h3></td>
+            <td><h3>Pincode</h3></td>
+        </thead>
+        <tbody>
+            {% for student in student %}
+            <tr>
+                <td><h3>{{ student.name }}</h3></td>
+                <td><h3>{{ student.city }}</h3></td>
+                <td><h3>{{ student.addr }}</h3></td>
+                <td><h3>{{ student.pin }}</h3></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+</body>
+</html>

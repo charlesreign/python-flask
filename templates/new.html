@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQLAlchemy</title>
+</head>
+<body>
+    <h3>SQLAlchemy</h3>
+    <hr>
+        {%- for category, message in get_flashed_messages(with_categories =true) %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+        {%- endfor %}
+
+        <form action="{{ request.path }}" method="post">
+            <p>Name: <input type="text" name="name" placeholder="name"></p>
+            <p>city: <input type="text" name="city" placeholder="city"></p>
+            <p>address: <input type="text" name="addr" placeholder="address"></p>
+            <p>pin: <input type="text" name="pin" placeholder="pin"></p>
+            <input type="submit" value="submit">
+        </form>
+</body>
+</html>
